@@ -2,6 +2,7 @@ package Backend;
 import java.util.*;
 import java.io.*;
 
+
 public class Board {
     public static HashMap<String,Integer> inputaker() throws IOException{
         HashMap<String,Integer> map = new HashMap<>();
