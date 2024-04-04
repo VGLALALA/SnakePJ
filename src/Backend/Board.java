@@ -8,15 +8,18 @@ import java.util.TimerTask;
 
 public class Board extends TimerTask{
     private int time;
+    private static int[][] board;
     public Board() {
-
         time = 0;
         Timer clock = new Timer();
-        clock.scheduleAtFixedRate (new TimerTask(){
-            public void run() {
-                actionPerformed (null);
-            }
-        }, 0, 30);
+        clock.scheduleAtFixedRate(this, 0, 2000); // Schedule the current instance
+    }
+
+    @Override
+    public void run() {
+        time++;
+        System.out.println(time);
+        arrprint(board);
     }
     public static HashMap<String,Integer> inputaker() throws IOException{
         HashMap<String,Integer> map = new HashMap<>();
@@ -42,25 +45,19 @@ public class Board extends TimerTask{
         }
         return board;
     }
-    public static Tuple<Integer,Integer> foodGen(int boardsize){
-        Random random = new Random();
-        Tuple<Integer,Integer> coord = new Tuple<>(null,null);
-        int randomInt1 = random.nextInt(boardsize)-1;
-        int randomInt2 = random.nextInt(boardsize)-1;
-        coord.setFirst(randomInt1);
-        coord.setSecond(randomInt2);
-        return coord;
+    public static void foodGen(int boardsize){
+//        int randomInt1 = random.nextInt(boardsize)-1;
+//        int randomInt2 = random.nextInt(boardsize)-1;
+//        board[randomInt1][randomInt2] = 1;
     }
     public void actionPerformed (ActionEvent e) {
         time++;
-        System.out.println(time);
+
     }
     public static void main(String[]args) throws IOException {
         HashMap<String,Integer> map = inputaker();
         int boardsize = map.get("boardsize");
-        int[][] board = board(boardsize);
+        board = board(boardsize);
         arrprint(board);
-        Board baord = new Board();
-        System.out.println(board);
     }
 }
