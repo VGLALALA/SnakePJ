@@ -42,5 +42,7 @@ public class Board {
         int boardsize = map.get("boardsize");
         int[][] board = board(boardsize);
         arrprint(board);
+        System.out.println("you are a monkey");
+
     }
 }
