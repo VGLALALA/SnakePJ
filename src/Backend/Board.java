@@ -8,15 +8,17 @@ import java.util.TimerTask;
 
 public class Board extends TimerTask{
     private int time;
-    public Board() {
 
+    public Board() {
         time = 0;
         Timer clock = new Timer();
-        clock.scheduleAtFixedRate (new TimerTask(){
-            public void run() {
-                actionPerformed (null);
-            }
-        }, 0, 30);
+        clock.scheduleAtFixedRate(this, 0, 30); // Schedule the current instance
+    }
+
+    @Override
+    public void run() {
+        time++;
+        System.out.println(time);
     }
     public static HashMap<String,Integer> inputaker() throws IOException{
         HashMap<String,Integer> map = new HashMap<>();
