@@ -1,9 +1,23 @@
 package Backend;
 import java.util.*;
 import java.io.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
+public class Board extends TimerTask{
+    private int time;
+    public Board() {
 
-public class Board {
+        time = 0;
+        Timer clock = new Timer();
+        clock.scheduleAtFixedRate (new TimerTask(){
+            public void run() {
+                actionPerformed (null);
+            }
+        }, 0, 30);
+    }
     public static HashMap<String,Integer> inputaker() throws IOException{
         HashMap<String,Integer> map = new HashMap<>();
         InputStreamReader in = new InputStreamReader(System.in);
@@ -37,10 +51,16 @@ public class Board {
         coord.setSecond(randomInt2);
         return coord;
     }
+    public void actionPerformed (ActionEvent e) {
+        time++;
+        System.out.println(time);
+    }
     public static void main(String[]args) throws IOException {
         HashMap<String,Integer> map = inputaker();
         int boardsize = map.get("boardsize");
         int[][] board = board(boardsize);
         arrprint(board);
+        Board baord = new Board();
+        System.out.println(board);
     }
 }
