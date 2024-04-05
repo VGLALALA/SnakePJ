@@ -23,7 +23,9 @@ public class Board extends TimerTask{
 
         arrprint(board);
     }
-
+    public int[][] getBoard() {
+        return board;
+    }
     public static void arrprint(int[][] board) {
         for (int i = 0; i < board.length; i++) {
             System.out.println(Arrays.toString(board[i]));
@@ -50,17 +52,7 @@ public class Board extends TimerTask{
         board[randomInt1][randomInt2] = 1;
     }
     public static void main(String[]args) throws IOException {
-        HashMap<String,Integer> map = inputaker();
-        int boardsize = map.get("boardsize");
-        Board gameBoard = new Board(boardsize);
+        Board gameBoard = new Board(6);
     }
-    public static HashMap<String,Integer> inputaker() throws IOException{
-        HashMap<String,Integer> map = new HashMap<>();
-        InputStreamReader in = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(in);
-        System.out.println("Set Board Size: ");
-        int boardsize = Integer.parseInt(br.readLine());
-        map.put("boardsize",boardsize);
-        return map;
-    }
+
 }
