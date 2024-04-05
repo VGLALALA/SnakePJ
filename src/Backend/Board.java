@@ -13,13 +13,14 @@ public class Board extends TimerTask{
         time = 0;
         Timer clock = new Timer();
         board = new int[boardsize][boardsize];
-        clock.scheduleAtFixedRate(this, 0, 2000);
+        clock.scheduleAtFixedRate(this, 0, 2000)
     }
     @Override
     public void run() {
         time++;
         System.out.println(time);
         foodGen(board);
+
         arrprint(board);
     }
 
