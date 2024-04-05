@@ -13,7 +13,7 @@ public class Board extends TimerTask{
         time = 0;
         Timer clock = new Timer();
         board = new int[boardsize][boardsize];
-        clock.scheduleAtFixedRate(this, 0, 2000); // Schedule the current instance
+        clock.scheduleAtFixedRate(this, 0, 2000);
     }
     @Override
     public void run() {
