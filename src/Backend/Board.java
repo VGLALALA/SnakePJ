@@ -23,14 +23,14 @@ public class Board extends TimerTask{
 
         arrprint(board);
     }
-    public int[][] getBoard() {
+    public void getBoard() {
         return board;
     }
     public static void arrprint(int[][] board) {
         for (int i = 0; i < board.length; i++) {
             System.out.println(Arrays.toString(board[i]));
         }
-    }
+    
 
     public static int[][] board(int size) {
         int[][] board = new int[size][size];
