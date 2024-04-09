@@ -13,7 +13,7 @@ public class Board extends TimerTask{
         time = 0;
         Timer clock = new Timer();
         board = new int[boardsize][boardsize];
-        clock.scheduleAtFixedRate(this, 0, 2000)
+        clock.scheduleAtFixedRate(this, 0, 2000);
     }
     @Override
     public void run() {
@@ -30,8 +30,7 @@ public class Board extends TimerTask{
         for (int i = 0; i < board.length; i++) {
             System.out.println(Arrays.toString(board[i]));
         }
-    
-
+    }
     public static int[][] board(int size) {
         int[][] board = new int[size][size];
         for (int i = 0; i < board.length; i++) {
