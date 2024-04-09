@@ -1,9 +1,12 @@
 package Backend;
-
-
+import java.util.*;
+import java.io.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Timer;
-
-public class Main{
+import java.util.TimerTask;
+public class Main extends TimerTask{
+    private int time;
     private static int boardsize = InputTaker.sizeGetter();
     private int[][] board = Board.board(boardsize);
     public Main(int boardsize) {
@@ -17,7 +20,7 @@ public class Main{
         time++;
         System.out.println(time);
         Board.foodGen(board);
-        arrprint(board);
+        Board.arrprint(board);
     }
     public static void main(String[]args){
 
