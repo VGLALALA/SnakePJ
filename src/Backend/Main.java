@@ -1,15 +1,18 @@
 package Backend;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.*;
 import java.io.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
-public class Main extends TimerTask{
+public class Main extends TimerTask implements KeyListener {
     private JFrame frame;
     private int time;
+    private int key = 87;
     public static int[][] board;
     public static int boardSize = InputTaker.sizeGetter();
     public static JLabel[][] frames = Main.createLabelGrid(boardSize, boardSize);
@@ -34,6 +37,9 @@ public class Main extends TimerTask{
         }
         frame.getContentPane().add(panel);
         frame.setVisible(true);
+        frame.addKeyListener(this);
+        frame.setFocusable(true);
+        frame.requestFocusInWindow();
         time = 0;
         Timer clock = new Timer();
         clock.scheduleAtFixedRate(this, 0, 2000);
@@ -53,6 +59,7 @@ public class Main extends TimerTask{
     @Override
     public void run() {
         time++;
+        board = SnakeAPI.doMove(board,key,true);
         for (int i = 0; i < frames.length; i++) {
             for (int j = 0; j < frames.length; j++) {
                 frames[i][j].setText(Integer.toString(board[i][j]));
@@ -63,6 +70,14 @@ public class Main extends TimerTask{
         Board.arrprint(board);
     }
 
+    public void keyPressed(KeyEvent e) {
+        key = e.getKeyCode();
+        System.out.println(key);
+    }
+    public void keyReleased(KeyEvent e) {
+    }
+    public void keyTyped(KeyEvent e) {
+    }
     public static void main(String[] args) {
         Main backendMain = new Main();
     }

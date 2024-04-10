@@ -47,7 +47,6 @@ public class Board extends TimerTask{
         board[randomInt1][randomInt2] = 1;
     }
     public static void main(String[]args) throws IOException {
-        Board gameBoard = new Board(6);
     }
 
 }
