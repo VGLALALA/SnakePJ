@@ -20,7 +20,6 @@ public class Board extends TimerTask{
         time++;
         System.out.println(time);
         foodGen(board);
-
         arrprint(board);
     }
     public static void arrprint(int[][] board) {
