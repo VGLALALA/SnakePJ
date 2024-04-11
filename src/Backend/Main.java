@@ -53,25 +53,26 @@ public class Main extends TimerTask implements KeyListener {
         }
         return labels;
     }
-    public static int[][] getBoard() {
-        return board;
-    }
     @Override
     public void run() {
         time++;
         board = SnakeAPI.doMove(board,key,true);
+        updateBoard();
+        System.out.println(time);
+        Board.foodGen(board);
+        Board.arrprint(board);
+    }
+    public static void updateBoard(){
         for (int i = 0; i < frames.length; i++) {
             for (int j = 0; j < frames.length; j++) {
                 frames[i][j].setText(Integer.toString(board[i][j]));
             }
         }
-        System.out.println(time);
-        Board.foodGen(board);
-        Board.arrprint(board);
     }
-
     public void keyPressed(KeyEvent e) {
         key = e.getKeyCode();
+        board = SnakeAPI.doMove(board,key,true);
+        Main.updateBoard();
         System.out.println(key);
     }
     public void keyReleased(KeyEvent e) {
