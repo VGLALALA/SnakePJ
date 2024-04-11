@@ -11,7 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import Backend.Board;
 import Backend.InputTaker;
-//import Backend.SnakeAPI;
+import Backend.SnakeAPI;
 
 
 public class Main extends TimerTask implements KeyListener {
@@ -47,7 +47,7 @@ public class Main extends TimerTask implements KeyListener {
         frame.requestFocusInWindow();
         time = 0;
         Timer clock = new Timer();
-        clock.scheduleAtFixedRate(this, 0, 2000);
+        clock.scheduleAtFixedRate(this, 0, 500);
     }
     private static JLabel[][] createLabelGrid(int rows, int cols) {
         JLabel[][] labels = new JLabel[rows][cols];
@@ -64,7 +64,7 @@ public class Main extends TimerTask implements KeyListener {
     @Override
     public void run() {
         time++;
-        //board = SnakeAPI.doMove(board,key,true);
+        board = SnakeAPI.doMove(board,key,true);
         for (int i = 0; i < frames.length; i++) {
             for (int j = 0; j < frames.length; j++) {
                 frames[i][j].setText(Integer.toString(board[i][j]));
