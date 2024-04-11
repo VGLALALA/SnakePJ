@@ -1,4 +1,4 @@
-package Backend;
+package Frontend;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -9,6 +9,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.util.TimerTask;
+import Backend.Board;
+import Backend.InputTaker;
+//import Backend.SnakeAPI;
+
+
 public class Main extends TimerTask implements KeyListener {
     private JFrame frame;
     private int time;
@@ -59,7 +64,7 @@ public class Main extends TimerTask implements KeyListener {
     @Override
     public void run() {
         time++;
-        board = SnakeAPI.doMove(board,key,true);
+        //board = SnakeAPI.doMove(board,key,true);
         for (int i = 0; i < frames.length; i++) {
             for (int j = 0; j < frames.length; j++) {
                 frames[i][j].setText(Integer.toString(board[i][j]));
