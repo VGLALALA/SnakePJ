@@ -14,7 +14,7 @@ public class SnakeAPI {
 
         if (person){
             if (key == 87) {
-                snake = addX(snake, new int[]{snake[0][0], snake[0][1] + 1});
+                snake = addX(snake, new int[]{snake[0igt ][0], snake[0][1] + 1});
             } else if (key == 83) {
                 snake = addX(snake, new int[]{snake[0][0], snake[0][1] - 1});
             } else if (key == 68) {
