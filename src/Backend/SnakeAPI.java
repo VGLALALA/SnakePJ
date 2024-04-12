@@ -3,7 +3,7 @@ import java.lang.*;
 import java.util.*;
 
 public class SnakeAPI {
-    private static int[][] snake = {{1,1}};
+    private static int[][] snake  = {{0 , 0}};;
     private static int[][] snake2 = {{1,1}};
     private static int health = 100;
     private static int health2 = 100;
@@ -36,11 +36,11 @@ public class SnakeAPI {
     public static int[][] doMove(int[][] board,int key,boolean person) {
         int[] head;
         int[] head2;
+
         if (person) {
             head = snake[snake.length-1];
             if (key == 87) {
                 snake = addX(snake, new int[]{head[0] - 1, head[1]});
-
             } else if (key == 83) {
                 snake = addX(snake, new int[]{head[0] + 1, head[1]});
 
@@ -61,7 +61,9 @@ public class SnakeAPI {
                 snake2 = addX(snake, new int[]{head2[0] - 1, head2[1]});
             }
         }
-        removeFront(snake);
+        System.out.println(Arrays.deepToString(snake));
+        snake = removeFront(snake);
+        System.out.println(Arrays.deepToString(snake));
         for (int i = 0; i < board.length;i++){
             for (int d = 0; d < board.length;d++){
                 boolean isInSnake = false;
@@ -79,7 +81,8 @@ public class SnakeAPI {
 
             }
         }
-        System.out.println(snake);
+
+
         return board;
     }
     public static void main(String[]args){
