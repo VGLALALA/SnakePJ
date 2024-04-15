@@ -5,8 +5,6 @@ import java.util.*;
 public class SnakeAPI {
     private static int[][] snake  = {{0 , 0}};;
     private static int[][] snake2 = {{1,1}};
-    private static int health = 100;
-    private static int health2 = 100;
 //    private static int snakelength = snake.length;
 //    private static int snakelength2 = snake2.length;
     public static int[][] addX(int[][] myArray, int[] x) {
@@ -38,7 +36,6 @@ public class SnakeAPI {
         int[] head2;
         head = snake[snake.length-1];
         if (person) {
-
             if (key == 87) {
                 snake = addX(snake, new int[]{head[0] - 1, head[1]});
             } else if (key == 83) {
@@ -61,6 +58,7 @@ public class SnakeAPI {
                 snake2 = addX(snake, new int[]{head2[0] - 1, head2[1]});
             }
         }
+        head = snake[snake.length-1];
         if (board[head[0]][head[1]] != 1) {
             snake = removeFront(snake);
         }
