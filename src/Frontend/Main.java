@@ -17,7 +17,7 @@ import Backend.SnakeAPI;
 public class Main extends TimerTask implements KeyListener {
     private JFrame frame;
     private int time;
-    private int key = 87;
+    private int key = 83;
     public static int[][] board;
     public static int boardSize = InputTaker.sizeGetter();
     public static JLabel[][] frames = Main.createLabelGrid(boardSize, boardSize);
