@@ -23,12 +23,12 @@ public class SnakeAPI {
         arrList.add(x);
         return arrList.toArray(new int[arrList.size()][2]);
     }
-    public static int[][] removeFront(int[][] array) {
+    public static int[][] removeBack(int[][] array) {
         if (array.length <= 1) {
             return new int[0][0]; // If the array has only one or zero elements, return an empty array
         } else {
             int[][] result = new int[array.length - 1][];
-            System.arraycopy(array, 1, result, 0, array.length - 1);
+            System.arraycopy(array, 0, result, 0, array.length - 1);
             return result;
         }
     }
@@ -45,6 +45,7 @@ public class SnakeAPI {
     public static int[][] doMove(int[][] board,int key,boolean person) {
         int[] head;
         int[] head2;
+        int[][] snakesnake  = {{board.length - 2 , 0}};
         if (person) {
             head = snake[snake.length-1];
             if (key == 87) {
@@ -70,7 +71,8 @@ public class SnakeAPI {
                 snake2 = addX(snake, new int[]{head2[0] - 1, head2[1]});
             }
         }
-        removeFront(snake);
+        System.out.println(snake);
+        removeBack(snake);
         for (int i = 0; i < board.length;i++){
             for (int d = 0; d < board.length;d++){
                 boolean isInSnake = false;
