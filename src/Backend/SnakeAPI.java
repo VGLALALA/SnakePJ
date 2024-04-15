@@ -16,7 +16,7 @@ public class SnakeAPI {
     }
     public static int[][] removeFront(int[][] array) {
         if (array.length <= 1) {
-            return new int[0][0]; // If the array has only one or zero elements, return an empty array
+            return new int[0][0];
         } else {
             int[][] result = new int[array.length - 1][];
             System.arraycopy(array, 1, result, 0, array.length - 1);
@@ -36,9 +36,9 @@ public class SnakeAPI {
     public static int[][] doMove(int[][] board,int key,boolean person) {
         int[] head;
         int[] head2;
-
+        head = snake[snake.length-1];
         if (person) {
-            head = snake[snake.length-1];
+
             if (key == 87) {
                 snake = addX(snake, new int[]{head[0] - 1, head[1]});
             } else if (key == 83) {
@@ -61,8 +61,9 @@ public class SnakeAPI {
                 snake2 = addX(snake, new int[]{head2[0] - 1, head2[1]});
             }
         }
-        System.out.println(Arrays.deepToString(snake));
-        snake = removeFront(snake);
+        if (board[head[0]][head[1]] != 1) {
+            snake = removeFront(snake);
+        }
         System.out.println(Arrays.deepToString(snake));
         for (int i = 0; i < board.length;i++){
             for (int d = 0; d < board.length;d++){
@@ -81,8 +82,6 @@ public class SnakeAPI {
 
             }
         }
-
-
         return board;
     }
     public static void main(String[]args){
