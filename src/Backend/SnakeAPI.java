@@ -3,12 +3,21 @@ import java.lang.*;
 import java.util.*;
 
 public class SnakeAPI {
-    private static int[][] snake = {{1,1}};
-    private static int[][] snake2 = {{1,1}};
-    private static int health = 100;
-    private static int health2 = 100;
-//    private static int snakelength = snake.length;
-//    private static int snakelength2 = snake2.length;
+    public static int[][] snake;
+    public static int[][] snake2 = {{1,1}};
+    public static int health = 100;
+    public static int health2 = 100;
+    public static int snakelength = snake.length;
+    public static int snakelength2 = snake2.length;
+    public DataWrapper getValue(String condition) {
+        if (condition == "HEALTH") {
+            return new DataWrapper(health,health2);
+        } else if(condition == "LENGTH") {
+            return new DataWrapper(snakelength,snakelength2);
+        } else if (condition == "BODY") {
+            return new DataWrapper(snake,snake2);
+        }
+    }
     public static int[][] addX(int[][] myArray, int[] x) {
         List<int[]> arrList = new ArrayList<>(Arrays.asList(myArray));
         arrList.add(x);
