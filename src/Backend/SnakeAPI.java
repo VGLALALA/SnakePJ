@@ -3,8 +3,8 @@ import java.lang.*;
 import java.util.*;
 
 public class SnakeAPI {
-    private static int[][] snake  = {{0 , 0}};;
-    private static int[][] snake2 = {{1,1}};
+    private static int[][] snake  = {{1 , 1}};;
+    private static int[][] snake2 = {{5 , 5}};
 //    private static int snakelength = snake.length;
 //    private static int snakelength2 = snake2.length;
     public static int[][] addX(int[][] myArray, int[] x) {
@@ -12,18 +12,14 @@ public class SnakeAPI {
         arrList.add(x);
         return arrList.toArray(new int[arrList.size()][2]);
     }
-
-    public static int[][] removeFirstSubArray(int[][] originalArray) {
-
-        // Create a new 2D array with one less sub-array
-        int[][] newArray = new int[originalArray.length - 1][];
-
-        // Copy sub-arrays from the original array, skipping the first sub-array
-        for (int i = 1; i < originalArray.length; i++) {
-            newArray[i - 1] = originalArray[i];
+    public static int[][] removeFront(int[][] array) {
+        if (array.length <= 1) {
+            return new int[0][0];
+        } else {
+            int[][] result = new int[array.length - 1][];
+            System.arraycopy(array, 1, result, 0, array.length - 1);
+            return result;
         }
-
-        return newArray;
     }
     //online
 //    public Object getValue(String condition) {
@@ -39,6 +35,7 @@ public class SnakeAPI {
         int[] head;
         int[] head2;
         head = snake[snake.length-1];
+        head2 = snake2[snake2.length-1];
         if (person) {
             if (key == 87) {
                 snake = addX(snake, new int[]{head[0] - 1, head[1]});
@@ -51,7 +48,7 @@ public class SnakeAPI {
                 snake = addX(snake, new int[]{head[0], head[1] - 1});
             }
         } else {
-            head2 = snake2[snake2.length-1];
+
             if (key == 87) {
                 snake2 = addX(snake, new int[]{head2[0], head2[1] + 1});
             } else if (key == 83) {
@@ -62,13 +59,19 @@ public class SnakeAPI {
                 snake2 = addX(snake, new int[]{head2[0] - 1, head2[1]});
             }
         }
+        head2 = snake2[snake2.length-1];
         head = snake[snake.length-1];
         if(head[0] > 9 || head[0] < 0 || head[1] > 9 || head[1] < 0){
             System.out.println("YOU LOSE!");
             System.exit(0);
+        } else if (head2[0] > 9 || head2[0] < 0 || head2[1] > 9 || head2[1] < 0) {
+
         }
         if (board[head[0]][head[1]] != 1) {
-            snake = removeFirstSubArray(snake);
+            snake = removeFront(snake);
+        }else{
+            Observer.health = 100;
+            Observer.health2 = 100;
         }
         System.out.println(Arrays.deepToString(snake));
         for (int i = 0; i < board.length;i++){
@@ -92,5 +95,5 @@ public class SnakeAPI {
     }
     public static void main(String[]args){
 
-    } 
+    }
 }

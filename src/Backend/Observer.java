@@ -5,12 +5,6 @@ public class Observer {
     private int health = Main.health;
     private int health2 = Main.health2;
     private int[][] board = Board.board;
-    public static int getHumanHealth(){
-        return health;
-    }
-    public static int getBotHealth(){
-        return health2;
-    }
     public static boolean sharesSpace(int[][] array1, int[][] array2) {
 
     }

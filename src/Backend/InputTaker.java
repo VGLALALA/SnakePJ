@@ -12,8 +12,11 @@ public class InputTaker  {
     }
     public static int sizeGetter() {
         Scanner myObj = new Scanner(System.in);
-        System.out.println("What board size?: ");
-        int size = myObj.nextInt();
+        int size = 0;
+        while (size < 5) {
+            System.out.println("What board size?: ");
+            size = myObj.nextInt();
+        }
         return size;
     }
 }

@@ -9,10 +9,10 @@ public class SnakeBot {
     private static BotHealth = Observer.getBotHealth();
 
     static {
-        safeMoves.add(87); // ASCII for 'W' (Up)
-        safeMoves.add(83); // ASCII for 'S' (Down)
-        safeMoves.add(68); // ASCII for 'D' (Right)
-        safeMoves.add(65); // ASCII for 'A' (Left)
+        safeMoves.add(87); //(Up)
+        safeMoves.add(83); //(Down)
+        safeMoves.add(68); //(Right)
+        safeMoves.add(65); //(Left)
     }
     public static int[][] findAllOnes(int[][] board) {
         List<int[]> tempCoords = new ArrayList<>();
