@@ -55,7 +55,7 @@ public class Main extends TimerTask implements KeyListener {
         JLabel[][] labels = new JLabel[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                labels[i][j] = new JLabel(); // Initialize each JLabel
+                labels[i][j] = new JLabel();
             }
         }
         return labels;
