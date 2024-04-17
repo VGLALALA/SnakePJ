@@ -18,6 +18,8 @@ public class Main extends TimerTask implements KeyListener {
     private JFrame frame;
     private int time;
     private int key = 83;
+    private static int health = 100;
+    private static int health2 = 100;
     public static int[][] board;
     public static int boardSize = InputTaker.sizeGetter();
     public static JLabel[][] frames = Main.createLabelGrid(boardSize, boardSize);
@@ -53,7 +55,7 @@ public class Main extends TimerTask implements KeyListener {
         JLabel[][] labels = new JLabel[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                labels[i][j] = new JLabel(); // Initialize each JLabel
+                labels[i][j] = new JLabel();
             }
         }
         return labels;
@@ -65,6 +67,9 @@ public class Main extends TimerTask implements KeyListener {
     public void run() {
         time++;
         board = SnakeAPI.doMove(board,key,true);
+
+        health -= 1;
+        health2 -= 1;
         for (int i = 0; i < frames.length; i++) {
             for (int j = 0; j < frames.length; j++) {
                 frames[i][j].setText(Integer.toString(board[i][j]));
