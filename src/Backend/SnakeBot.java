@@ -1,76 +1,40 @@
 package Backend;
+import java.util.ArrayList;
 import java.util.que
 public class SnakeBot {
 
-        // Directions arrays for moving up, down, left, right
-        private static final int[] dRow = {-1, 1, 0, 0};
-        private static final int[] dCol = {0, 0, -1, 1};
 
-        public static List<int[]> bfsWithPath(int[][] grid, int startX, int startY, int endX, int endY) {
-            int n = grid.length;
+    private static ArrayList<Integer> safeMoves = new ArrayList<>();
 
-            boolean[][] visited = new boolean[n][m];
-            Map<int[], int[]> parent = new HashMap<>();
-            Queue<int[]> queue = new ArrayDeque<>();
-            queue.offer(new int[]{startX, startY});
-            visited[startX][startY] = true;
-            parent.put(new int[]{startX, startY}, null);
+    static {
+        safeMoves.add(87); // ASCII for 'W' (Up)
+        safeMoves.add(83); // ASCII for 'S' (Down)
+        safeMoves.add(68); // ASCII for 'D' (Right)
+        safeMoves.add(65); // ASCII for 'A' (Left)
+    }
 
-            while (!queue.isEmpty()) {
-                int[] current = queue.poll();
-                int x = current[0];
-                int y = current[1];
-                if (x == endX && y == endY) {
-                    return reconstructPath(parent, current);
-                }
+    public static void checkAndRemoveMoves(int[][] board, int[] head) {
+        int x = head[0];
+        int y = head[1];
 
-                for (int i = 0; i < 4; i++) {
-                    int nx = x + dRow[i];
-                    int ny = y + dCol[i];
-                    if (nx >= 0 && nx < n && ny >= 0 && ny < n && !visited[nx][ny] && grid[nx][ny] == 0) {
-                        visited[nx][ny] = true;
-                        queue.offer(new int[]{nx, ny});
-                        parent.put(new int[]{nx, ny}, current);
-                    }`
-                }
-            }
-
-            return Collections.emptyList();
+        // Check Up (W)
+        if (x > 0 && board[x-1][y] == 3) {
+            safeMoves.remove(Integer.valueOf(87)); // Remove 'W' from the list
         }
-
-        private static List<int[]> reconstructPath(Map<int[], int[]> parent, int[] endState) {
-            LinkedList<int[]> path = new LinkedList<>();
-            int[] step = endState;
-            while (step != null) {
-                path.addFirst(step);
-                step = parent.get(step);
-            }
-            return path;
+        // Check Down (S)
+        if (x < board.length - 1 && board[x+1][y] == 3) {
+            safeMoves.remove(Integer.valueOf(83)); // Remove 'S' from the list
         }
+        // Check Right (D)
+        if (y < board[0].length - 1 && board[x][y+1] == 3) {
+            safeMoves.remove(Integer.valueOf(68)); // Remove 'D' from the list
+        }
+        // Check Left (A)
+        if (y > 0 && board[x][y-1] == 3) {
+            safeMoves.remove(Integer.valueOf(65)); // Remove 'A' from the list
+        }
+    }
 
-//        public static void main(String[] args) {
-//            int[][] grid = {
-//                    {0, 0, 0, 0, 0},
-//                    {0, 1, 1, 1, 0},
-//                    {0, 1, 0, 0, 0},
-//                    {0, 0, 0, 1, 1},
-//                    {0, 1, 0, 0, 0}
-//            };
-//
-//            int startX = 0, startY = 0;
-//            int endX = 4, endY = 4;
-//            List<int[]> path = bfsWithPath(grid, startX, startY, endX, endY);
-//
-//            if (!path.isEmpty()) {
-//                System.out.println("Path from start to end:");
-//                for (int[] coords : path) {
-//                    System.out.printf("(%d, %d) -> ", coords[0], coords[1]);
-//                }
-//                System.out.println("End");
-//            } else {
-//                System.out.println("No path found.");
-//            }
-//        }
 
 
     public static void main(String args[]){
