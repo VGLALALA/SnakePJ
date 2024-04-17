@@ -14,14 +14,18 @@ public class SnakeAPI {
         arrList.add(x);
         return arrList.toArray(new int[arrList.size()][2]);
     }
-    public static int[][] removeFront(int[][] array) {
-        if (array.length <= 1) {
-            return new int[0][0];
-        } else {
-            int[][] result = new int[array.length - 1][];
-            System.arraycopy(array, 1, result, 0, array.length - 1);
-            return result;
+
+    public static int[][] removeFirstSubArray(int[][] originalArray) {
+
+        // Create a new 2D array with one less sub-array
+        int[][] newArray = new int[originalArray.length - 1][];
+
+        // Copy sub-arrays from the original array, skipping the first sub-array
+        for (int i = 1; i < originalArray.length; i++) {
+            newArray[i - 1] = originalArray[i];
         }
+
+        return newArray;
     }
     //online
 //    public Object getValue(String condition) {
@@ -62,7 +66,7 @@ public class SnakeAPI {
             }
         }
         if (board[head[0]][head[1]] != 1) {
-            snake = removeFront(snake);
+            snake = removeFirstSubArray(snake);
         }
         System.out.println(Arrays.deepToString(snake));
         for (int i = 0; i < board.length;i++){
@@ -86,5 +90,5 @@ public class SnakeAPI {
     }
     public static void main(String[]args){
 
-    }
+    } 
 }
