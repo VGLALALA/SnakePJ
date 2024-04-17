@@ -33,8 +33,6 @@ public class SnakeBot {
         if (y > 0 && board[x][y-1] == 3) {
             safeMoves.remove(Integer.valueOf(65)); // Remove 'A' from the list
         }
-        }
-        
     }
 
 
