@@ -7,10 +7,10 @@ public class SnakeBot {
     private static ArrayList<Integer> safeMoves = new ArrayList<>();
 
     static {
-        safeMoves.add(87); // ASCII for 'W' (Up)
-        safeMoves.add(83); // ASCII for 'S' (Down)
-        safeMoves.add(68); // ASCII for 'D' (Right)
-        safeMoves.add(65); // ASCII for 'A' (Left)
+        safeMoves.add(87); //(Up)
+        safeMoves.add(83); //(Down)
+        safeMoves.add(68); //(Right)
+        safeMoves.add(65); //(Left)
     }
 
     public static void checkAndRemoveMoves(int[][] board, int[] head) {

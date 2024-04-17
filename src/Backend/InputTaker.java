@@ -15,7 +15,7 @@ public class InputTaker  {
         int size = 0;
         while (size < 5) {
             System.out.println("What board size?: ");
-            int size = myObj.nextInt();
+            size = myObj.nextInt();
         }
         return size;
     }

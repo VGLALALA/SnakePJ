@@ -70,8 +70,8 @@ public class SnakeAPI {
         if (board[head[0]][head[1]] != 1) {
             snake = removeFront(snake);
         }else{
-            Main.health = 100;
-            Main.health2 = 100;
+            Observer.health = 100;
+            Observer.health2 = 100;
         }
         System.out.println(Arrays.deepToString(snake));
         for (int i = 0; i < board.length;i++){

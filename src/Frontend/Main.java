@@ -16,10 +16,9 @@ import Backend.SnakeAPI;
 
 public class Main extends TimerTask implements KeyListener {
     private JFrame frame;
+    private JLabel hpLabel;
     private int time;
     private int key = 83;
-    private static int health = 100;
-    private static int health2 = 100;
     public static int[][] board;
     public static int boardSize = InputTaker.sizeGetter();
     public static JLabel[][] frames = Main.createLabelGrid(boardSize, boardSize);
@@ -40,6 +39,10 @@ public class Main extends TimerTask implements KeyListener {
                 label.setVerticalAlignment(JLabel.CENTER);
                 panel.add(label);
                 frames[i][j] = label;
+                hpLabel = new JLabel(Integer.toString(100));
+                hpLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+                hpLabel.setFont(new Font("Serif", Font.PLAIN, 35));
+                frame.getContentPane().add(hpLabel, BorderLayout.NORTH);
             }
         }
         frame.getContentPane().add(panel);
@@ -60,6 +63,7 @@ public class Main extends TimerTask implements KeyListener {
         }
         return labels;
     }
+
     public static int[][] getBoard() {
         return board;
     }
@@ -67,8 +71,9 @@ public class Main extends TimerTask implements KeyListener {
     public void run() {
         time++;
         board = SnakeAPI.doMove(board,key,true);
-
-        health -= 1;
+        hpLabel.setText("HP: " + Observer.getHp(1));
+        Observer.health -= 1;
+        Observer.health2 -= 1;
         health2 -= 1;
         for (int i = 0; i < frames.length; i++) {
             for (int j = 0; j < frames.length; j++) {
