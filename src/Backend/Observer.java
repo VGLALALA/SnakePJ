@@ -5,17 +5,8 @@ public class Observer {
     private int health = Main.health;
     private int health2 = Main.health2;
     private int[][] board = Board.board;
-    public static boolean share(int[][] array1, int[][] array2) {
-        Set<String> set = new HashSet<>();
-        for (int[] arr : array1) {
-            set.add(Arrays.toString(arr));
-        }
-        for (int[] arr : array2) {
-            if (set.contains(Arrays.toString(arr))) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean sharesSpace(int[][] array1, int[][] array2) {
+
     }
     public static int doMove(int health, int health2, int[][] snake, int[][] snake2) {
 
