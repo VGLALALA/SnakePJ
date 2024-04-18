@@ -8,7 +8,7 @@ import java.util.TimerTask;
 
 public class Board extends TimerTask{
     private int time;
-    private int[][] board;
+    public static int[][] board;
     public Board(int boardsize) {
         time = 0;
         Timer clock = new Timer();

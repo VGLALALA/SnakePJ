@@ -3,8 +3,8 @@ import java.lang.*;
 import java.util.*;
 
 public class SnakeAPI {
-    private static int[][] snake  = {{1 , 1}};;
-    private static int[][] snake2 = {{5 , 5}};
+    public static int[][] snake  = {{1 , 1}};;
+    public static int[][] snake2 = {{5 , 5}};
 //    private static int snakelength = snake.length;
 //    private static int snakelength2 = snake2.length;
     public static int[][] addX(int[][] myArray, int[] x) {

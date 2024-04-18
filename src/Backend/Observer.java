@@ -2,8 +2,8 @@ package Backend;
 public class Observer {
     private static int[][] snake = SnakeAPI.snake;
     private static int[][] snake2 = SnakeAPI.snake2;
-    private static int health = 100;
-    private static int health2 = 100;
+    public static int health = 100;
+    public static int health2 = 100;
     private int[][] board = Board.board;
     public static int getHp(int i) {
         if (i == 1) {
@@ -12,7 +12,7 @@ public class Observer {
             return health2;
         }
     }
-    public static boolean inList(int[][] array1,int[] j) {
+    public static boolean inList(int[][] array,int[] j) {
         for (int[] i: array){
             if (j == i){
                 return true;
