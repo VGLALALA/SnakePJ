@@ -71,15 +71,15 @@ public class Main extends TimerTask implements KeyListener {
     public void run() {
         time++;
         board = SnakeAPI.doMove(board,key,true);
-        hpLabel.setText("HP: " + Observer.getHp(1));
+        hpLabel.setText("HP: " + Observer.health);
         Observer.health -= 1;
         Observer.health2 -= 1;
-        health2 -= 1;
         for (int i = 0; i < frames.length; i++) {
             for (int j = 0; j < frames.length; j++) {
                 frames[i][j].setText(Integer.toString(board[i][j]));
             }
         }
+        Observer.sharesSpace();
         System.out.println(time);
         Board.foodGen(board);
         Board.arrprint(board);

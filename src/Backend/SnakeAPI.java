@@ -59,14 +59,7 @@ public class SnakeAPI {
                 snake2 = addX(snake, new int[]{head2[0] - 1, head2[1]});
             }
         }
-        head2 = snake2[snake2.length-1];
-        head = snake[snake.length-1];
-        if(head[0] > 9 || head[0] < 0 || head[1] > 9 || head[1] < 0){
-            System.out.println("YOU LOSE!");
-            System.exit(0);
-        } else if (head2[0] > 9 || head2[0] < 0 || head2[1] > 9 || head2[1] < 0) {
 
-        }
         if (board[head[0]][head[1]] != 1) {
             snake = removeFront(snake);
         }else{
