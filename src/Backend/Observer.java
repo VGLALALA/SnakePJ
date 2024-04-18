@@ -1,20 +1,27 @@
 package Backend;
+import java.util.Arrays;
 public class Observer {
     private static int[][] array1 = SnakeAPI.snake;
     private static int[][] array2 = SnakeAPI.snake2;
-    public int health = 100;
-    public int health2 = 100;
+    public static int health = 100;
+    public static int health2 = 100;
     private int[][] board = Board.board;
-    private boolean ss1 = false;
-    private boolean ss2 = false;
-    public static int sharesSpace() {
-        for (int[][] a : array1){
-            if (array2[array2.length-1] == array1){
+    private static boolean ss1 = false;
+    private static boolean ss2 = false;
+    public static void sharesSpace(int[][] array1,int[][] array2) {
+        System.out.println("SAD");
+        System.out.println(Arrays.deepToString(array1));
+        for (int i = 0; i < array1.length - 1; i++) {
+            int[] a = array1[i];
+            System.out.println(Arrays.toString(a));
+            System.out.println(Arrays.toString(array1[array1.length-1]));
+            if (array2[array2.length-1] == a || array1[array1.length-1] == a){
                 ss2 = true;
             }
         }
-        for (int[][] a : array2){
-            if (array1[array1.length-1] == a){
+        for (int i = 0; i < array2.length - 1; i++) {
+            int[] a = array2[i];
+            if (array1[array1.length-1] == a || array2[array2.length-1] == a) {
                 ss1 = true;
             }
         }
@@ -30,6 +37,16 @@ public class Observer {
         }
         if (health2 < 1){
             ss2 = true;
+        }
+        if (ss1 && ss2){
+            System.out.println("TIE");
+            System.exit(0);
+        } else if (ss1) {
+            System.out.println("YOU LOSE");
+            System.exit(0);
+        } else if (ss2) {
+            System.out.println("YOU WIN");
+            System.exit(0);
         }
     }
     public static void main(String[] args) {

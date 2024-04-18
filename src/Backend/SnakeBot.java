@@ -67,7 +67,7 @@ public class SnakeBot {
         if (!safeMoves.isEmpty()) {
             return safeMoves.get(random.nextInt(safeMoves.size()));
         } else {
-            throw new IllegalStateException("No safe moves available.");
+            throw new IllegalStateException("No safe moves");
         }
     }
 }

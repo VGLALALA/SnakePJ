@@ -11,6 +11,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import Backend.Board;
 import Backend.InputTaker;
+import Backend.Observer;
 import Backend.SnakeAPI;
 
 
@@ -79,7 +80,7 @@ public class Main extends TimerTask implements KeyListener {
                 frames[i][j].setText(Integer.toString(board[i][j]));
             }
         }
-        Observer.sharesSpace();
+
         System.out.println(time);
         Board.foodGen(board);
         Board.arrprint(board);
