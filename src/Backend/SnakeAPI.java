@@ -61,13 +61,14 @@ public class SnakeAPI {
         }
         head = snake[snake.length-1];
         head2 = snake2[snake2.length-1];
+        Observer.sharesSpace(snake,snake2);
         if (board[head[0]][head[1]] != 1) {
             snake = removeFront(snake);
         }else{
             Observer.health = 100;
             Observer.health2 = 100;
         }
-        Observer.sharesSpace(snake,snake2);
+
 
 
         System.out.println(Arrays.deepToString(snake));
