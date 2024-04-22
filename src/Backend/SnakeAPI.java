@@ -50,13 +50,13 @@ public class SnakeAPI {
         } else {
 
             if (key == 87) {
-                snake2 = addX(snake, new int[]{head2[0], head2[1] + 1});
+                snake2 = addX(snake2, new int[]{head2[0] - 1, head2[1]});
             } else if (key == 83) {
-                snake2 = addX(snake, new int[]{head2[0], head2[1] - 1});
+                snake2 = addX(snake2, new int[]{head2[0] + 1, head2[1]});
             } else if (key == 68) {
-                snake2 = addX(snake, new int[]{head2[0] + 1, head2[1]});
+                snake2 = addX(snake2, new int[]{head2[0], head2[1] + 1});
             } else if (key == 65) {
-                snake2 = addX(snake, new int[]{head2[0] - 1, head2[1]});
+                snake2 = addX(snake2, new int[]{head2[0], head2[1] - 1});
             }
         }
         head = snake[snake.length-1];
@@ -64,13 +64,10 @@ public class SnakeAPI {
         Observer.sharesSpace(snake,snake2);
         if (board[head[0]][head[1]] != 1) {
             snake = removeFront(snake);
-        }else{
+        } else {
             Observer.health = 100;
             Observer.health2 = 100;
         }
-
-
-
         System.out.println(Arrays.deepToString(snake));
         for (int i = 0; i < board.length;i++){
             for (int d = 0; d < board.length;d++){

@@ -33,7 +33,19 @@ public class Main extends TimerTask implements KeyListener {
         JPanel panel = new JPanel(new GridLayout(boardSize,boardSize));
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
-                JLabel label = new JLabel(""+board[i][j]);
+                JLabel label = new JLabel();
+                if(board[i][j] == 0){
+                    label = new JLabel();
+                    label.setText("");
+                } else if (board[i][j] == 1) {
+
+                    label = new JLabel("<html><div style='width: 30px; height: 30px; border-radius: 50%; background-color: pink;'></div></html>");
+                    label.setText("");
+                } else if (board[i][j] == 3) {
+                    label = new JLabel("<html><div style='width: 30px; height: 30px; background-color: green;'></div></html>");
+                    label.setText("");
+                }
+
                 label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 label.setFont(new Font("Serif", Font.PLAIN, 35));
                 label.setHorizontalAlignment(JLabel.CENTER);

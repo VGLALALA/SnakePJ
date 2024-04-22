@@ -11,14 +11,14 @@ public class Observer {
     public static void sharesSpace(int[][] array1,int[][] array2) {
         for (int i = 0; i < array1.length - 1; i++) {
             int[] a = array1[i];
-            if (array2[array2.length-1] == a || array1[array1.length-1] == a){
-                ss2 = true;
+            if (Arrays.equals(array1[array1.length - 1], a)) {
+                ss1 = true;
             }
         }
         for (int i = 0; i < array2.length - 1; i++) {
             int[] a = array2[i];
-            if (array1[array1.length-1] == a || array2[array2.length-1] == a) {
-                ss1 = true;
+            if (Arrays.equals(array2[array2.length - 1], a)) {
+                ss2 = true;
             }
         }
         int[] head2 = array2[array2.length-1];
