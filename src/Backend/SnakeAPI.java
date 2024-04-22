@@ -12,6 +12,9 @@ public class SnakeAPI {
         arrList.add(x);
         return arrList.toArray(new int[arrList.size()][2]);
     }
+    public static int[] getHead() {
+        return snake[snake.length-1];
+    }
     public static int[][] removeFront(int[][] array) {
         if (array.length <= 1) {
             return new int[0][0];
@@ -61,7 +64,7 @@ public class SnakeAPI {
         }
         head = snake[snake.length-1];
         head2 = snake2[snake2.length-1];
-        Observer.sharesSpace(snake,snake2);
+        Observer.sharesSpace(snake,snake2,board.length-1);
         if (board[head[0]][head[1]] != 1) {
             snake = removeFront(snake);
         } else {

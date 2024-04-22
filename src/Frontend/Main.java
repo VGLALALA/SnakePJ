@@ -38,8 +38,7 @@ public class Main extends TimerTask implements KeyListener {
                     label = new JLabel();
                     label.setText("");
                 } else if (board[i][j] == 1) {
-
-                    label = new JLabel("<html><div style='width: 30px; height: 30px; border-radius: 50%; background-color: pink;'></div></html>");
+                    label = new JLabel("<html><div style='width: 30px; height: 30px; background-color: red;'></div></html>");
                     label.setText("");
                 } else if (board[i][j] == 3) {
                     label = new JLabel("<html><div style='width: 30px; height: 30px; background-color: green;'></div></html>");
@@ -53,7 +52,7 @@ public class Main extends TimerTask implements KeyListener {
                 panel.add(label);
                 frames[i][j] = label;
                 hpLabel = new JLabel(Integer.toString(100));
-                hpLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+                hpLabel.setHorizontalAlignment(SwingConstants.LEFT);
                 hpLabel.setFont(new Font("Serif", Font.PLAIN, 35));
                 frame.getContentPane().add(hpLabel, BorderLayout.NORTH);
             }
@@ -85,16 +84,29 @@ public class Main extends TimerTask implements KeyListener {
         time++;
         board = SnakeAPI.doMove(board,key,true);
         hpLabel.setText("HP: " + Observer.health);
-        Observer.health -= 1;
-        Observer.health2 -= 1;
+        Observer.health -= 3;
+        Observer.health2 -= 3;
         for (int i = 0; i < frames.length; i++) {
-            for (int j = 0; j < frames.length; j++) {
-                frames[i][j].setText(Integer.toString(board[i][j]));
+            for (int j = 0; j < frames[i].length; j++) {
+                int value = board[i][j];
+                if (value == 0) {
+                    frames[i][j].setText("");
+                } else if (value == 1) {
+                    frames[i][j].setText("<html><div style='width: 30px; height: 30px; background-color: red;'></div></html>");
+                } else if (value == 3) {
+                    frames[i][j].setText("<html><div style='width: 30px; height: 30px; background-color: green;'></div></html>");
+                } else {
+                    frames[i][j].setText(Integer.toString(value));
+                }
             }
         }
-
+        int[] head = SnakeAPI.getHead();
+        System.out.println(Arrays.toString(head));
+        frames[head[0]][head[1]].setText("<html><div style='width: 30px; height: 30px; background-color: lime;'></div></html>");
         System.out.println(time);
-        Board.foodGen(board);
+        if (Math.random() <= 0.33) {
+            Board.foodGen(board);
+        }
         Board.arrprint(board);
     }
 
