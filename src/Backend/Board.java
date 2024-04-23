@@ -43,7 +43,7 @@ public class Board extends TimerTask{
         do {
             randomInt1 = random.nextInt(board.length);
             randomInt2 = random.nextInt(board.length);
-        } while (board[randomInt1][randomInt2] == 1);
+        } while (board[randomInt1][randomInt2] != 0);
         board[randomInt1][randomInt2] = 1;
     }
     public static void main(String[]args) throws IOException {
