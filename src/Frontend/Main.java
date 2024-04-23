@@ -21,9 +21,10 @@ public class Main extends TimerTask implements KeyListener {
     private int time;
     private int key = 83;
     public static int[][] board;
-    public static int boardSize = InputTaker.sizeGetter();
+    public static int boardSize;
     public static JLabel[][] frames = Main.createLabelGrid(boardSize, boardSize);
     public Main() {
+        showInputDialog();
         board = Board.board(boardSize);
         frame = new JFrame();
         frame.setTitle("BattleSnake");
@@ -65,6 +66,30 @@ public class Main extends TimerTask implements KeyListener {
         time = 0;
         Timer clock = new Timer();
         clock.scheduleAtFixedRate(this, 0, 500);
+    }
+    private void showInputDialog() {
+        String input = JOptionPane.showInputDialog(null, "Enter the board size:", "BattleSnake Setup", JOptionPane.QUESTION_MESSAGE);
+        if (input != null) {
+            try {
+                int boardSize = Integer.parseInt(input);
+                if (boardSize > 0) {
+                    setupGame(boardSize);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid board size. Please enter a positive number.", "Error", JOptionPane.ERROR_MESSAGE);
+                    showInputDialog(); // Ask again
+                }
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number.", "Error", JOptionPane.ERROR_MESSAGE);
+                showInputDialog(); // Ask again
+            }
+        }
+    }
+    private void setupGame(int boardSize) {
+        Main.boardSize = boardSize;
+        Main.board = Board.board(boardSize);
+        Main.frames = Main.createLabelGrid(boardSize, boardSize);
+
+        frame = new JFrame();
     }
     private static JLabel[][] createLabelGrid(int rows, int cols) {
         JLabel[][] labels = new JLabel[rows][cols];
