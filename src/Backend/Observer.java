@@ -35,6 +35,18 @@ public class Observer {
         if (health2 < 1){
             ss2 = true;
         }
+        if (Arrays.equals(head, head2)){
+            if(array1.length < array2.length){
+                ss1 = true;
+                ss2 = false;
+            } else if(array2.length < array1.length) {
+                ss1 = false;
+                ss2 = true;
+            } else {
+                ss1 = true;
+                ss2 = true;
+            }
+        }
         if (ss1 && ss2){
             System.out.println("TIE");
             System.exit(0);
