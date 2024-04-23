@@ -77,11 +77,11 @@ public class Main extends TimerTask implements KeyListener {
                     setupGame(boardSize);
                 } else {
                     JOptionPane.showMessageDialog(null, "Invalid board size. Please enter a positive number.", "Error", JOptionPane.ERROR_MESSAGE);
-                    showInputDialog(); // Ask again
+                    showInputDialog();
                 }
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number.", "Error", JOptionPane.ERROR_MESSAGE);
-                showInputDialog(); // Ask again
+                showInputDialog();
             }
         }
     }
