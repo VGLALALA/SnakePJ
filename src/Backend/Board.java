@@ -9,10 +9,17 @@ import java.util.TimerTask;
 public class Board extends TimerTask{
     private int time;
     public static int[][] board;
+    public static int[][] foodCoords = {{5,5}};
+    public static int[][] addX(int[][] myArray, int[] x) {
+        List<int[]> arrList = new ArrayList<>(Arrays.asList(myArray));
+        arrList.add(x);
+        return arrList.toArray(new int[arrList.size()][2]);
+    }
     public Board(int boardsize) {
         time = 0;
         Timer clock = new Timer();
         board = new int[boardsize][boardsize];
+        foodCoords = new int[0][2];
         clock.scheduleAtFixedRate(this, 0, 2000);
     }
     @Override
@@ -44,6 +51,7 @@ public class Board extends TimerTask{
             randomInt1 = random.nextInt(board.length);
             randomInt2 = random.nextInt(board.length);
         } while (board[randomInt1][randomInt2] != 0);
+        foodCoords = addX(foodCoords, new int[]{randomInt1, randomInt2});
         board[randomInt1][randomInt2] = 1;
     }
     public static void main(String[]args) throws IOException {

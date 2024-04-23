@@ -13,27 +13,25 @@ public class SnakeBot {
     private static Random random = new Random();
 
     private static int[][] board = Board.board;
-    private static int[][] foodCoords = GameAPI.getFoodLocations();
+    private static int[][] foodCoords = Board.foodCoords;
+
     private static int[] botHead = SnakeAPI.snake2[SnakeAPI.snake2.length - 1];
     private static int[] humanHead = SnakeAPI.snake[SnakeAPI.snake.length - 1];
     private static int[][] humanBody = SnakeAPI.snake;
     private static int[][] botBody = SnakeAPI.snake2;
 
-    private static int OppHealth = Observer.getHumanHealth();
-    private static int BotHealth = Observer.getBotHealth();
+    private static int OppHealth = Observer.health;
+    private static int BotHealth = Observer.health2;
 
     private static ArrayList<Integer> safeMoves = new ArrayList<>();
 
     static {
-        safeMoves.add(87); // (Up)
-        safeMoves.add(83); // (Down)
-        safeMoves.add(68); // (Right)
-        safeMoves.add(65); // (Left)
+        safeMoves.add(87);
+        safeMoves.add(83);
+        safeMoves.add(68);
+        safeMoves.add(65);
     }
-
     public static int getRandomMove() {
-        OppHealth = Observer.getHumanHealth();
-        BotHealth = Observer.getBotHealth();
         int[] target;
         if (BotHealth <= OppHealth) {
             target = findClosestCoord(foodCoords, botHead);

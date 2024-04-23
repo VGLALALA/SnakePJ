@@ -13,6 +13,7 @@ import Backend.Board;
 import Backend.InputTaker;
 import Backend.Observer;
 import Backend.SnakeAPI;
+import Backend.SnakeBot;
 
 
 public class Main extends TimerTask implements KeyListener {
@@ -108,6 +109,12 @@ public class Main extends TimerTask implements KeyListener {
     @Override
     public void run() {
         time++;
+        if (Board.foodCoords == null || Math.random() <= 0.33) {
+            Board.foodGen(board);
+        }
+        Board.arrprint(board);
+        int key2 = SnakeBot.getRandomMove();
+        board = SnakeAPI.doMove(board,key2,false);
         board = SnakeAPI.doMove(board,key,true);
         hpLabel.setText("HP: " + Observer.health);
         Observer.health -= 3;
@@ -121,6 +128,8 @@ public class Main extends TimerTask implements KeyListener {
                     frames[i][j].setText("<html><div style='width: 30px; height: 30px; background-color: red;'></div></html>");
                 } else if (value == 3) {
                     frames[i][j].setText("<html><div style='width: 30px; height: 30px; background-color: green;'></div></html>");
+                } else if (value == 4) {
+                    frames[i][j].setText("<html><div style='width: 30px; height: 30px; background-color: orange;'></div></html>");
                 } else {
                     frames[i][j].setText(Integer.toString(value));
                 }
@@ -130,10 +139,7 @@ public class Main extends TimerTask implements KeyListener {
         System.out.println(Arrays.toString(head));
         frames[head[0]][head[1]].setText("<html><div style='width: 30px; height: 30px; background-color: lime;'></div></html>");
         System.out.println(time);
-        if (Math.random() <= 0.33) {
-            Board.foodGen(board);
-        }
-        Board.arrprint(board);
+
     }
 
     public void keyPressed(KeyEvent e) {
