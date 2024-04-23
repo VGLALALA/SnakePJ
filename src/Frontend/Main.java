@@ -18,6 +18,7 @@ import Backend.SnakeAPI;
 public class Main extends TimerTask implements KeyListener {
     private JFrame frame;
     private JLabel hpLabel;
+    private JLabel hpLabel2;
     private int time;
     private int key = 83;
     public static int[][] board;
@@ -55,6 +56,11 @@ public class Main extends TimerTask implements KeyListener {
                 hpLabel.setHorizontalAlignment(SwingConstants.LEFT);
                 hpLabel.setFont(new Font("Serif", Font.PLAIN, 35));
                 frame.getContentPane().add(hpLabel, BorderLayout.NORTH);
+
+                hpLabel2 = new JLabel(Integer.toString(100));
+                hpLabel2.setHorizontalAlignment(SwingConstants.RIGHT);
+                hpLabel2.setFont(new Font("Serif", Font.PLAIN, 35));
+                frame.getContentPane().add(hpLabel2, BorderLayout.NORTH);
             }
         }
         frame.getContentPane().add(panel);
@@ -84,6 +90,7 @@ public class Main extends TimerTask implements KeyListener {
         time++;
         board = SnakeAPI.doMove(board,key,true);
         hpLabel.setText("HP: " + Observer.health);
+        hpLabel2.setText("HP: " + Observer.health2);
         Observer.health -= 3;
         Observer.health2 -= 3;
         for (int i = 0; i < frames.length; i++) {
