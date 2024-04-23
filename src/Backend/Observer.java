@@ -8,6 +8,8 @@ public class Observer {
     private int[][] board = Board.board;
     private static boolean ss1 = false;
     private static boolean ss2 = false;
+    public static int[] head2 = array2[array2.length-1];
+    public static int[] head = array1[array1.length-1];
     public static void sharesSpace(int[][] array1,int[][] array2,int maxSize) {
         for (int i = 0; i < array1.length - 1; i++) {
             int[] a = array1[i];
@@ -21,8 +23,7 @@ public class Observer {
                 ss2 = true;
             }
         }
-        int[] head2 = array2[array2.length-1];
-        int[] head = array1[array1.length-1];
+
         if(head[0] > maxSize || head[0] < 0 || head[1] > maxSize || head[1] < 0){
             ss1 = true;
             System.out.println("HI");

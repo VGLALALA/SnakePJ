@@ -32,6 +32,7 @@ public class Main extends TimerTask implements KeyListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         JPanel panel = new JPanel(new GridLayout(boardSize,boardSize));
+
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 JLabel label = new JLabel();
