@@ -43,6 +43,9 @@ public class Board extends TimerTask{
         }
         return board;
     }
+    public static int[][] Boardgetter(){
+        return board;
+    }
     public static void foodGen(int[][] board){
         Random random = new Random();
         int randomInt1;
