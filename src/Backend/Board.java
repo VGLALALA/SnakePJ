@@ -9,7 +9,10 @@ import java.util.TimerTask;
 public class Board extends TimerTask{
     private int time;
     public static int[][] board;
-    public static int[][] foodCoords = {{5,5}};
+    public static int[][] foodCoords = {
+            {5,5}
+    };
+
     public static int[][] addX(int[][] myArray, int[] x) {
         List<int[]> arrList = new ArrayList<>(Arrays.asList(myArray));
         arrList.add(x);
