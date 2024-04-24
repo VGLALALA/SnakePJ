@@ -2,7 +2,7 @@ package Backend;
 import java.util.ArrayList;
 import Backend.Observer;
 import Backend.SnakeAPI;
-import Backend.Board;
+
 
 
 import java.util.ArrayList;
@@ -11,12 +11,20 @@ import java.util.Random;
 
 public class SnakeBot {
     private static Random random = new Random();
-
-    private static int[][] board = Board.board;
+    private static int[][] board;
+    public static int[][] board(int size) {
+        int[][] board = new int[size][size];
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                board[i][j] = 0;
+            }
+        }
+        return board;
+    }
     private static int[][] foodCoords = Board.foodCoords;
 
     private static int[] botHead = SnakeAPI.snake2[SnakeAPI.snake2.length - 1];
-    private static int[] humanHead = SnakeAPI.snake[SnakeAPI.snake.length - 1];
+    private static int[] humanHead = {0,0};
     private static int[][] humanBody = SnakeAPI.snake;
     private static int[][] botBody = SnakeAPI.snake2;
 
@@ -87,4 +95,9 @@ public class SnakeBot {
         }
         return safeMoves.get(random.nextInt(safeMoves.size()));
     }
+    public static void main(String[]args){
+        board = board(10);
+        System.out.println(getRandomMove());
+    }
 }
+

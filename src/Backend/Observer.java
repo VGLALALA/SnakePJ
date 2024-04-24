@@ -5,7 +5,7 @@ public class Observer {
     private static int[][] array2 = SnakeAPI.snake2;
     public static int health = 100;
     public static int health2 = 100;
-    private int[][] board = Board.board;
+    public static int[][] board = Board.board;
     private static boolean ss1 = false;
     private static boolean ss2 = false;
     public static int[] head2 = array2[array2.length-1];
