@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class SnakeBot {
     private static Random random = new Random();
-    private static int[][] board;
+    public static int[][] board;
     public static int[][] board(int size) {
         int[][] board = new int[size][size];
         for (int i = 0; i < board.length; i++) {
@@ -39,7 +39,8 @@ public class SnakeBot {
         safeMoves.add(68);
         safeMoves.add(65);
     }
-    public static int getRandomMove() {
+    public static int getRandomMove(int[][] b) {
+        board = b;
         int[] target;
         if (BotHealth <= OppHealth) {
             target = findClosestCoord(foodCoords, botHead);
@@ -96,8 +97,6 @@ public class SnakeBot {
         return safeMoves.get(random.nextInt(safeMoves.size()));
     }
     public static void main(String[]args){
-        board = board(10);
-        System.out.println(getRandomMove());
     }
 }
 

@@ -113,7 +113,7 @@ public class Main extends TimerTask implements KeyListener {
             Board.foodGen(board);
         }
         Board.arrprint(board);
-        int key2 = SnakeBot.getRandomMove();
+        int key2 = SnakeBot.getRandomMove(board);
         board = SnakeAPI.doMove(board,key2,false);
         board = SnakeAPI.doMove(board,key,true);
         hpLabel.setText("HP: " + Observer.health);

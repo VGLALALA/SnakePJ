@@ -73,7 +73,7 @@ public class SnakeAPI {
 
                 }
             }
-            Observer.sharesSpace(snake,snake2,board.length-1);
+
         } else {
             if (key == 87) {
                 snake2 = addX(snake2, new int[]{head2[0] - 1, head2[1]});
@@ -108,6 +108,7 @@ public class SnakeAPI {
                 }
             }
         }
+        Observer.sharesSpace(snake,snake2,board.length-1);
 
 
 
