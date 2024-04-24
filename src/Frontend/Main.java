@@ -116,6 +116,7 @@ public class Main extends TimerTask implements KeyListener {
         int key2 = SnakeBot.getRandomMove(board);
         board = SnakeAPI.doMove(board,key2,false);
         board = SnakeAPI.doMove(board,key,true);
+        board = SnakeAPI.moveSnakes(board);
         hpLabel.setText("HP: " + Observer.health);
         Observer.health -= 3;
         Observer.health2 -= 3;
@@ -141,7 +142,6 @@ public class Main extends TimerTask implements KeyListener {
         System.out.println(time);
 
     }
-
     public void keyPressed(KeyEvent e) {
         key = e.getKeyCode();
         System.out.println(key);

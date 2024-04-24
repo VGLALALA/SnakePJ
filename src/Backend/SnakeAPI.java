@@ -44,36 +44,12 @@ public class SnakeAPI {
                 snake = addX(snake, new int[]{head[0] - 1, head[1]});
             } else if (key == 83) {
                 snake = addX(snake, new int[]{head[0] + 1, head[1]});
-
             } else if (key == 68) {
                 snake = addX(snake, new int[]{head[0], head[1] + 1});
             } else if (key == 65) {
                 snake = addX(snake, new int[]{head[0], head[1] - 1});
             }
             head = snake[snake.length-1];
-            if (board[head[0]][head[1]] != 1) {
-                snake = removeFront(snake);
-            } else {
-                Observer.health = 100;
-            }
-            for (int i = 0; i < board.length;i++){
-                for (int d = 0; d < board.length;d++){
-                    boolean isInSnake = false;
-                    for (int[] position : snake) {
-                        if (position[0] == i && position[1] == d) {
-                            isInSnake = true;
-                            break;
-                        }
-                    }
-                    if (board[i][d] != 3 && isInSnake) {
-                        board[i][d] = 3;
-                    } else if (board[i][d] == 3 && !isInSnake) {
-                        board[i][d] = 0;
-                    }
-
-                }
-            }
-
         } else {
             if (key == 87) {
                 snake2 = addX(snake2, new int[]{head2[0] - 1, head2[1]});
@@ -85,40 +61,63 @@ public class SnakeAPI {
                 snake2 = addX(snake2, new int[]{head2[0], head2[1] - 1});
             }
             head2 = snake2[snake2.length-1];
-            if (board[head2[0]][head2[1]] != 1) {
-                snake2 = removeFront(snake2);
-            } else {
-                Observer.health2 = 100;
-            }
-            for (int i = 0; i < board.length;i++){
-                for (int d = 0; d < board.length;d++){
-                    boolean isInSnake = false;
-                    for (int[] position : snake2) {
-                        if (position[0] == i && position[1] == d) {
-                            isInSnake = true;
-                            break;
-                        }
-                    }
-                    if (board[i][d] != 3 && isInSnake) {
-                        board[i][d] = 4;
-                    } else if (board[i][d] == 3 && !isInSnake) {
-                        board[i][d] = 0;
-                    }
 
+        }
+        return board;
+    }
+    public static int[][] moveSnakes(int[][] board) {
+        int[] head = snake[snake.length - 1];
+        int[] head2 = snake2[snake2.length - 1];
+
+        Observer.sharesSpace(snake, snake2, board.length - 1);
+
+        if (board[head[0]][head[1]] != 1) {
+            snake = removeFront(snake);
+        } else {
+            Observer.health = 100;
+        }
+        if (board[head2[0]][head2[1]] != 1) {
+            snake2 = removeFront(snake2);
+        } else {
+            Observer.health2 = 100;
+        }
+
+        for (int i = 0; i < board.length;i++){
+            for (int d = 0; d < board.length;d++){
+                boolean isInSnake = false;
+                for (int[] position : snake) {
+                    if (position[0] == i && position[1] == d) {
+                        isInSnake = true;
+                        break;
+                    }
                 }
+                if (board[i][d] != 3 && isInSnake) {
+                    board[i][d] = 3;
+                } else if (board[i][d] == 3 && !isInSnake) {
+                    board[i][d] = 0;
+                }
+
             }
         }
-        Observer.sharesSpace(snake,snake2,board.length-1);
+        for (int i = 0; i < board.length;i++){
+            for (int d = 0; d < board.length;d++){
+                boolean isInSnake = false;
+                for (int[] position : snake2) {
+                    if (position[0] == i && position[1] == d) {
+                        isInSnake = true;
+                        break;
+                    }
+                }
+                if (board[i][d] != 4 && isInSnake) {
+                    board[i][d] = 4;
+                } else if (board[i][d] == 4 && !isInSnake) {
+                    board[i][d] = 0;
+                }
 
-
-
-
-        System.out.println(Arrays.deepToString(snake));
-
-
+            }
+        }
         return board;
     }
     public static void main(String[]args){
-
     }
 }

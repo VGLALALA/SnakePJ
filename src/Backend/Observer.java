@@ -23,7 +23,8 @@ public class Observer {
                 ss2 = true;
             }
         }
-
+        head = array1[array1.length-1];
+        head2 = array2[array2.length-1];
         if(head[0] > maxSize || head[0] < 0 || head[1] > maxSize || head[1] < 0){
             ss1 = true;
             System.out.println("HI");
