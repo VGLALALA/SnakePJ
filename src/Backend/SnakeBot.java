@@ -1,13 +1,12 @@
 package Backend;
-import java.util.ArrayList;
+import java.util.*;
+
 import Backend.Observer;
 import Backend.SnakeAPI;
 
 
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class SnakeBot {
     private static Random random = new Random();
@@ -37,15 +36,17 @@ public class SnakeBot {
         } else {
             target = humanHead;
         }
+        System.out.println("TARGET");
+        System.out.println(Arrays.toString(target));
         checkAndRemoveUnsafeMoves();
         return moveTowardsTarget(target);
     }
     private static void resetSafeMoves() {
         safeMoves.clear();
-        safeMoves.add(87); // W
-        safeMoves.add(83); // S
-        safeMoves.add(68); // D
-        safeMoves.add(65); // A
+        safeMoves.add(87);
+        safeMoves.add(83);
+        safeMoves.add(68);
+        safeMoves.add(65);
     }
     private static void checkAndRemoveUnsafeMoves() {
         Board.arrprint(board);
