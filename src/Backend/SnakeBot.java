@@ -31,6 +31,7 @@ public class SnakeBot {
     public static int getRandomMove(int[][] b) {
         board = b;
         int[] target;
+        resetSafeMoves();
         if (botBody.length <= humanBody.length) {
             target = findClosestCoord(foodCoords, botHead);
         } else {
@@ -39,7 +40,13 @@ public class SnakeBot {
         checkAndRemoveUnsafeMoves();
         return moveTowardsTarget(target);
     }
-
+    private static void resetSafeMoves() {
+        safeMoves.clear();
+        safeMoves.add(87); // W
+        safeMoves.add(83); // S
+        safeMoves.add(68); // D
+        safeMoves.add(65); // A
+    }
     private static void checkAndRemoveUnsafeMoves() {
         Board.arrprint(board);
         List<Integer> movesToRemove = new ArrayList<>();
