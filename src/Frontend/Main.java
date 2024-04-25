@@ -70,6 +70,7 @@ public class Main extends TimerTask implements KeyListener {
         clock.scheduleAtFixedRate(this, 0, 500);
     }
     private void showInputDialog() {
+        JLabel messageLabel = new JLabel("Controls WASD, red boxes are food, orange is opponent, and green is you");
         String input = JOptionPane.showInputDialog(null, "Enter the board size:", "BattleSnake Setup", JOptionPane.QUESTION_MESSAGE);
         if (input != null) {
             try {
@@ -85,6 +86,11 @@ public class Main extends TimerTask implements KeyListener {
                 showInputDialog();
             }
         }
+        Object[] message = {
+                messageLabel
+
+        };
+        JOptionPane.showMessageDialog(null, message, "BattleSnake Setup", JOptionPane.INFORMATION_MESSAGE);
     }
     private void setupGame(int boardSize) {
         Main.boardSize = boardSize;

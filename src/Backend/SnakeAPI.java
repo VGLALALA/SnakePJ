@@ -5,8 +5,6 @@ import java.util.*;
 public class SnakeAPI {
     public static int[][] snake  = {{1 , 1}};;
     public static int[][] snake2 = {{5 , 5}};
-//    private static int snakelength = snake.length;
-//    private static int snakelength2 = snake2.length;
     public static int[][] addX(int[][] myArray, int[] x) {
         List<int[]> arrList = new ArrayList<>(Arrays.asList(myArray));
         arrList.add(x);
@@ -24,16 +22,6 @@ public class SnakeAPI {
             return result;
         }
     }
-    //online
-//    public Object getValue(String condition) {
-//
-//        if (condition) {
-//            return "A String";
-//        } else {
-//            return 42; // An Integer
-//        }
-//    }
-
     public static int[][] doMove(int[][] board,int key,boolean person) {
         int[] head;
         int[] head2;
