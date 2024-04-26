@@ -15,12 +15,22 @@ public class Observer {
             int[] a = array1[i];
             if (Arrays.equals(array1[array1.length - 1], a)) {
                 ss1 = true;
+
+            }
+            if (Arrays.equals(array2[array2.length - 1], a)) {
+                ss2 = true;
+            System.out.println("DEATH BY OPP");
             }
         }
         for (int i = 0; i < array2.length - 1; i++) {
             int[] a = array2[i];
             if (Arrays.equals(array2[array2.length - 1], a)) {
                 ss2 = true;
+                System.out.println("DEATH BY SELF");
+            }
+            if (Arrays.equals(array1[array1.length - 1], a)) {
+                ss1 = true;
+
             }
         }
         head = array1[array1.length-1];

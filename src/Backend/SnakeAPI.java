@@ -28,13 +28,13 @@ public class SnakeAPI {
         head = snake[snake.length-1];
         head2 = snake2[snake2.length-1];
         if (person) {
-            if (key == 87) {
+            if (key == 87) {//up
                 snake = addX(snake, new int[]{head[0] - 1, head[1]});
-            } else if (key == 83) {
+            } else if (key == 83) {//down
                 snake = addX(snake, new int[]{head[0] + 1, head[1]});
-            } else if (key == 68) {
+            } else if (key == 68) {//right
                 snake = addX(snake, new int[]{head[0], head[1] + 1});
-            } else if (key == 65) {
+            } else if (key == 65) {//left
                 snake = addX(snake, new int[]{head[0], head[1] - 1});
             }
             head = snake[snake.length-1];

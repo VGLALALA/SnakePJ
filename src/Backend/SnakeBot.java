@@ -31,6 +31,13 @@ public class SnakeBot {
         board = b;
         int[] target;
         resetSafeMoves();
+        foodCoords = Board.foodCoords;
+        botHead = SnakeAPI.snake2[SnakeAPI.snake2.length - 1];
+        humanHead = SnakeAPI.snake[SnakeAPI.snake.length - 1];
+        humanBody = SnakeAPI.snake;
+        botBody = SnakeAPI.snake2;
+        OppHealth = Observer.health;
+        BotHealth = Observer.health2;
         if (botBody.length <= humanBody.length) {
             target = findClosestCoord(foodCoords, botHead);
         } else {
@@ -39,7 +46,14 @@ public class SnakeBot {
         System.out.println("TARGET");
         System.out.println(Arrays.toString(target));
         checkAndRemoveUnsafeMoves();
-        return moveTowardsTarget(target);
+        System.out.println("SAFE MOVES");
+        System.out.println(safeMoves);
+        System.out.println("Head: ");
+        System.out.println(Arrays.toString(botHead));
+        int n = moveTowardsTarget(target);
+        System.out.println("MOVE CHOSEN: ");
+        System.out.println(n);
+        return n;
     }
     private static void resetSafeMoves() {
         safeMoves.clear();
@@ -64,9 +78,9 @@ public class SnakeBot {
         int y = head[1];
         switch (move) {
             case 87:
-                return x > 0 && board[x - 1][y] != 3 && board[x - 1][y] != 4;
+                return x>0 && board[x - 1][y] != 3 && board[x - 1][y] != 4;
             case 83:
-                return x < board.length - 1 && board[x + 1][y] != 3 && board[x + 1][y] != 4;
+                return x < board.length && board[x + 1][y] != 3 && board[x + 1][y] != 4;
             case 68:
                 return y < board[0].length - 1 && board[x][y + 1] != 3 && board[x][y + 1] != 4;
             case 65:

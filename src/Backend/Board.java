@@ -8,8 +8,13 @@ import java.util.TimerTask;
 
 public class Board extends TimerTask{
     private int time;
+    private static int index = 1;
     public static int[][] board;
     public static int[][] foodCoords = new int[10][2];
+    static{
+        foodCoords[index][0] = 6;
+        foodCoords[index][1] = 6;
+    }
     public Board(int boardsize) {
         time = 0;
         Timer clock = new Timer();
@@ -48,7 +53,6 @@ public class Board extends TimerTask{
             randomInt1 = random.nextInt(board.length);
             randomInt2 = random.nextInt(board.length);
         } while (board[randomInt1][randomInt2] != 0);
-        int index = 0;
         foodCoords[index][0] = randomInt1;
         foodCoords[index][1] = randomInt2;
         index++;
