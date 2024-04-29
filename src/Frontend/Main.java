@@ -149,8 +149,10 @@ public class Main extends TimerTask implements KeyListener {
 
     }
     public void keyPressed(KeyEvent e) {
-        key = e.getKeyCode();
-        System.out.println(key);
+        if(e.getKeyCode() == 87 || e.getKeyCode() == 83 || e.getKeyCode() == 68 || e.getKeyCode() == 65) {
+            key = e.getKeyCode();
+            System.out.println(key);
+        }
     }
     public void keyReleased(KeyEvent e) {
     }
