@@ -106,7 +106,7 @@ public class SnakeBot {
         int fin = 87;
         int[] sim = new int[2];
         if (safeMoves.isEmpty()) {
-            throw new IllegalStateException("No safe moves available");
+            return 87;
         }
         for (int move: safeMoves){
             if (move == 87) {
