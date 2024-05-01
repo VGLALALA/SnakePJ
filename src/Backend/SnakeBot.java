@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class SnakeBot {
     private static Random random = new Random();
     public static int[][] board;
-    private static int[][] foodCoords = Board.foodCoords;
     private static int[] botHead = SnakeAPI.snake2[SnakeAPI.snake2.length - 1];
     private static int[] humanHead = SnakeAPI.snake[SnakeAPI.snake.length - 1];
     private static int[][] humanBody = SnakeAPI.snake;
@@ -30,26 +29,33 @@ public class SnakeBot {
     public static int getRandomMove(int[][] b) {
         board = b;
         int[] target;
+        int boardSize = board.length;
         resetSafeMoves();
-        foodCoords = Board.foodCoords;
         botHead = SnakeAPI.snake2[SnakeAPI.snake2.length - 1];
         humanHead = SnakeAPI.snake[SnakeAPI.snake.length - 1];
         humanBody = SnakeAPI.snake;
         botBody = SnakeAPI.snake2;
         OppHealth = Observer.health;
         BotHealth = Observer.health2;
+
+
+
         if (botBody.length <= humanBody.length) {
-            target = findClosestCoord(foodCoords, botHead);
+            target = findClosestCoord(board, botHead);
         } else {
             target = humanHead;
         }
         System.out.println("TARGET");
         System.out.println(Arrays.toString(target));
+
         checkAndRemoveUnsafeMoves();
+
         System.out.println("SAFE MOVES");
         System.out.println(safeMoves);
+
         System.out.println("Head: ");
         System.out.println(Arrays.toString(botHead));
+
         int n = moveTowardsTarget(target);
         System.out.println("MOVE CHOSEN: ");
         System.out.println(n);
@@ -89,14 +95,23 @@ public class SnakeBot {
                 return false;
         }
     }
-    private static int[] findClosestCoord(int[][] coords, int[] current) {
-        int[] closest = coords[0];
+    private static int[] findClosestCoord(int[][] board, int[] current) {
+        int boardSize = board.length;
+        int[] closest = null;
         int minDistance = Integer.MAX_VALUE;
-        for (int[] coord : coords) {
-            int dist = Math.abs(coord[0] - current[0]) + Math.abs(coord[1] - current[1]);
-            if (dist < minDistance) {
-                minDistance = dist;
-                closest = coord;
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
+                int[] coord = {i,j};
+                if (board[i][j] == 1) {
+                    if (closest == null) {
+                        closest = coord;
+                    }
+                        int dist = Math.abs(coord[0] - current[0]) + Math.abs(coord[1] - current[1]);
+                        if (dist < minDistance) {
+                            minDistance = dist;
+                            closest = coord;
+                        }
+                }
             }
         }
         return closest;

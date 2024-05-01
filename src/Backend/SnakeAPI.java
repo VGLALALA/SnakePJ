@@ -63,6 +63,8 @@ public class SnakeAPI {
             snake = removeFront(snake);
         } else {
             Observer.health = 100;
+            Board.foodGen(board);
+
         }
         if (board[head2[0]][head2[1]] != 1) {
             snake2 = removeFront(snake2);

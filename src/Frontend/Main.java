@@ -26,7 +26,7 @@ public class Main extends TimerTask implements KeyListener {
     public static JLabel[][] frames = Main.createLabelGrid(boardSize, boardSize);
     public Main() {
         showInputDialog();
-        board = Board.board(boardSize);
+        board = Board.createBoard(boardSize);
         frame = new JFrame();
         frame.setTitle("BattleSnake");
         frame.setSize(1000,1000);
@@ -94,9 +94,8 @@ public class Main extends TimerTask implements KeyListener {
     }
     private void setupGame(int boardSize) {
         Main.boardSize = boardSize;
-        Main.board = Board.board(boardSize);
+        Main.board = board = Board.createBoard(boardSize);
         Main.frames = Main.createLabelGrid(boardSize, boardSize);
-
         frame = new JFrame();
     }
     private static JLabel[][] createLabelGrid(int rows, int cols) {
@@ -115,7 +114,7 @@ public class Main extends TimerTask implements KeyListener {
     @Override
     public void run() {
         time++;
-        if (Board.foodCoords == null || Math.random() <= 0.33) {
+        if (Math.random() <= 0.50) {
             Board.foodGen(board);
         }
         Board.arrprint(board);
