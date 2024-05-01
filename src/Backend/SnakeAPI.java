@@ -13,6 +13,9 @@ public class SnakeAPI {
     public static int[] getHead() {
         return snake[snake.length-1];
     }
+    public static int[] getHead2() {
+        return snake2[snake2.length-1];
+    }
     public static int[][] removeFront(int[][] array) {
         if (array.length <= 1) {
             return new int[0][0];
