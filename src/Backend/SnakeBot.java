@@ -86,8 +86,7 @@ public class SnakeBot {
             case 87:
                 return x>0 && board[x - 1][y] != 3 && board[x - 1][y] != 4;
             case 83:
-
-                return x < board.length && board[x + 1][y] != 3 && board[x + 1][y] != 4;
+                return x < board.length-1 && board[x + 1][y] != 3 && board[x + 1][y] != 4;
             case 68:
                 return y < board[0].length - 1 && board[x][y + 1] != 3 && board[x][y + 1] != 4;
             case 65:
